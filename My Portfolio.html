@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Portfolio</title>
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<script>
+function enterSite() {
+    document.getElementById("welcomeScreen").style.display = "none";
+    document.getElementById("mainContent").style.display = "block";
+}
+
+function exitSite() {
+    window.close();
+}
+</script>
+
+
+<script>
+window.addEventListener("scroll", () => {
+    document.querySelectorAll(".reveal").forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+            el.classList.add("active");
+        }
+    });
+});
+</script>
+
+
+
+<script>
+const text = `Hi, I am Princess, but most of the people I know call me "Pepes." I was born on October 22 and now 19 years old. Still discovering who I am and who I’m becoming. I live in Nagcarlan, Laguna and graduated in Cristobal S. Conducto Memorial Integrated National High School, where I pursued the STEM strand. I may seem quiet at first, but once I feel comfortable, my true personality shines (lively, expressive, and warm). I’m someone who feels deeply and values sincerity in every connection I make. Honesty and genuine energy matters a lot to me, and I’m naturally drawn to people I can easily vibe with. I find beauty in meaningful conversations, small moments, and being authentically myself. Whether in life or in the things I create, I always aim to bring heart, intention, and a touch of softness into everything I do.`;
+
+let index = 0;
+const speed = 30; // typing speed (lower = faster)
+
+function typeWriter() {
+    if (index < text.length) {
+        document.getElementById("typewriter").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeWriter, speed);
+    }
+}
+
+window.addEventListener("load", typeWriter);
+</script>
+
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImg">
+        <h3 id="modalTitle"></h3>
+        <p id="modalText"></p>
+    </div>
+</div>
+
+<script>
+const data = {
+    singing: {
+        title: "Singing",
+        img: "sing.png",
+        text: "I love singing as it allows me to express my emotions and connect deeply with music. I used to have a stage fright but I really want to sing in front of everyone so I did my best to be able to overcome it."
+    },
+    sleeping: {
+        title: "Sleeping",
+        img: "bby.png",
+        text: "Sleeping helps me recharge and feel at peace after long days."
+    },
+    guitar: {
+        title: "Playing Guitar",
+        img: "g.png",
+        text: "I pour my creativity into melodies on the guitar, and sometimes the ukulele joins in too. Whenever I’m feeling sad, these instruments become my comfort and safe place."
+    },
+    music: {
+        title: "Listening to music",
+        img: "am.jpg",
+        text: "I love listening to music. The genres that I listen to is very far from what I sing in contests. Artists like Rex Orange County, Arctic Monkeys, Ariana Grande, and Oasis are my favorite."
+    },
+    anime: {
+        title: "Watching Anime / Drama",
+        img: "p.png",
+        text: "I enjoy anime and drama series because they inspire and entertain me. My favorite anime is One Piece, favorite movie is The Princess Diaries, while my favorite drama series is Pinocchio."
+    }
+};
+
+function openModal(item) {
+    document.getElementById("modal").style.display = "block";
+    document.getElementById("modalTitle").innerText = data[item].title;
+    document.getElementById("modalText").innerText = data[item].text;
+    document.getElementById("modalImg").src = data[item].img;
+}
+
+function closeModal() {
+    document.getElementById("modal").style.display = "none";
+}
+</script>
+
+
+
+<body>
+
+<div id="welcomeScreen">
+    <h1>Welcome!</h1>
+    <div class="welcome-buttons">
+        <button onclick="enterSite()">View Portfolio</button>
+        <button onclick="exitSite()">Exit</button>
+    </div>
+</div>
+
+<div id="mainContent" style="display:none;">
+    <!-- PUT ALL YOUR EXISTING CODE HERE -->
+
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <h2 class="logo">MY PORTFOLIO</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+            <li><a href="#contact">Contacts</a></li>
+        </ul>
+    </nav>
+
+
+    <!-- HOME -->
+    <section id="home" class="section reveal">
+        <img src="M.png" class="profile-pic">
+        <h2>HELLO, I AM</h2>
+        <h1>PRINCESS ANNE CONSIGNADO!</h1>
+        <p>BS INFORMATION TECHNOLOGY STUDENT</p>
+    </section>
+
+    <!-- ABOUT -->
+     <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        section {
+            margin-bottom: 50px; /* invisible space after each section */
+        }
+
+        h2 {
+            font-weight: 600;
+            letter-spacing: 2px;
+        }
+
+        h4 {
+            font-weight: 400;
+            text-align: justify;
+            text-transform: uppercase;
+        }
+
+        ol {
+            margin-left: 20px;
+            font-weight: 400;
+        }
+    </style>
+
+    <section id="about" class="section reveal">
+        <h2>ABOUT ME</h2>
+        <h4 id="typewriter"></h4>
+
+
+    
+
+        <h2>HOBBIES</h2>                         
+            
+
+        <div class="card-grid">
+
+            <div class="card" onclick="openModal('singing')">
+                <img src="mic.jpg" alt="Singing">
+                <p>SINGING</p>
+            </div>
+
+            <div class="card" onclick="openModal('sleeping')">
+                <img src="zzz.jpg" alt="Sleeping">
+                <p>SLEEPING</p>
+            </div>
+
+            <div class="card" onclick="openModal('guitar')">
+                <img src="gu.jpg" alt="Playing Guitar">
+                <p>PLAYING GUITAR</p>
+            </div>
+
+            <div class="card" onclick="openModal('music')">
+                <img src="m.jpg" alt="music">
+                <p>LISTENING TO MUSIC</p>
+            </div>
+
+            <div class="card" onclick="openModal('anime')">
+                <img src="o.jpg" alt="Watching Anime">
+                <p>WATCHING ANIME / DRAMA</p>
+            </div>
+
+        </div> 
+
+        <h2>FAVORITE FOODS</h2>
+        <ol class="food-list">
+            <li>
+                <img src="b.png" alt="Buldak">
+                <span class="label">BULDAK</span>
+            </li>
+            <li>
+                <img src="f.png" alt="Fries">
+                <span class="label">FRIES</span>
+            </li>
+            <li>
+                <img src="c.png" alt="Cookies">
+                <span class="label">COOKIES</span>
+            </li>
+            <li>
+                <img src="s.png" alt="Sinigang">
+                <span class="label">SINIGANG</span>
+            </li>
+            <li>
+                <img src="t.png" alt="Spaghetti">
+                <span class="label">SPAGHETTI</span>
+            </li>
+            <li>
+                <img src="l.png" alt="Chocolate">
+                <span class="label">CHOCOLATE</span>
+            </li>
+        </ol>
+
+
+
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="section reveal">
+        <h2>SKILLS</h2>
+        <div class="skills-box">
+    <div class="skill-row">
+        <span class="skill-label">ADAPTABLITY</span>
+        <div class="skill-bar" style="--level:95%"></div>
+    </div>
+
+    <div class="skill-row">
+        <span class="skill-label">LOGICAL THINKING</span>
+        <div class="skill-bar" style="--level:92%"></div>
+    </div>
+
+    <div class="skill-row">
+        <span class="skill-label">TIME MANAGEMENT</span>
+        <div class="skill-bar" style="--level:80%"></div>
+    </div>
+
+    <div class="skill-row">
+        <span class="skill-label">COMMUNICATION SKILLS</span>
+        <div class="skill-bar" style="--level:85%"></div>
+    </div>
+</div>
+
+
+    </section>
+
+    <!-- PROJECTS -->
+
+    <section id="projects" class="section reveal">
+        <h2>PROJECTS</h2>
+
+        <button data-target="project1">Portfolio Website</button>
+        <button data-target="project2">DC Motor</button>
+        <button data-target="project3">Automated Plant Fertilizing System and Soil Nutrient Sensor</button>
+        <button data-target="project4">Paper Made Out of Banana Fibers (musa acuminata)</button>
+        <button data-target="project5">Illustration Board Made Out of Wood Dust</button>
+
+        <div id="project1" class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>This is the very first website I've created that showcases my skills, projects, and experience in a clear and professional way. It highlights my work, provides information about me, and includes ways to get in touch. The goal of this portfolio is to present my abilities and achievements while creating a strong personal brand online.</p>
+        </div>
+
+        <div id="project2" class="project-card">
+            <h3>DC Motor</h3>
+            <p>This project demonstrates a simple DC motor built using basic materials: wooden blocks, strong magnets, a metal rod, wires, and a high-voltage battery. The motor works by converting electrical energy into mechanical motion, showing the principles of electromagnetism in a hands-on and creative way.</p>
+        </div>
+
+        <div id="project3" class="project-card">
+            <h3>Research Project: Automated Plant Fertilizing System and Soil Nutrient Sensor</h3>
+            <p>A capstone project designed to deliver the right amount of nutrients to plants at the right time using sensors and programmed controls. It monitors plant needs, regulates fertilizer flow, and helps maintain healthy growth with minimal human intervention. A soil nutrient sensor measures key nutrients such as nitrogen, phosphorus, and potassium directly in the soil. It provides real-time data about soil health, allowing growers to adjust fertilization accurately for optimal plant development.</p>
+        </div>
+
+        <div id="project4" class="project-card">
+            <h3>Research Project: Paper Made Out of Banana Fibers (musa acuminata)</h3>
+            <p>Paper made from banana fibers uses the strong, flexible strands found in the stems of Musa acuminata. These fibers are processed into pulp and formed into sheets, creating an eco-friendly alternative to traditional wood-based paper. The result is durable, biodegradable paper with a natural texture, ideal for crafts, packaging, and sustainable products.</p>
+        </div>
+
+        <div id="project5" class="project-card">
+            <h3>Research Project: Illustration Board Made Out of Sawdust</h3>
+            <p>An illustration board made of sawdust is created by compressing fine wood particles with a binding agent to form a smooth, sturdy surface. This eco-friendly material repurposes wood waste into a durable board ideal for drawing, painting, and other creative projects. Its firm texture provides excellent support for detailed artwork while reducing reliance on traditional paper-based boards.</p>
+        </div>
+
+        <script src="script.js"></script>
+
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section id="achievements" class="section reveal">
+        <h2>ACHIEVEMENTS</h2>
+        <ul>
+            <li>IT SPECIALIST - DATA ANALYTICS CERTIFICATE</li>
+            <li>PYTHON ESSENTIALS 1 CERTIFICATE</li>
+            <li>LAGUNA MUSIKAHAN 2023 - 4TH PLACER</li>
+            <li>CONSISTENT HONOR STUDENT</li>
+            <li>BEST IN RESEARCH</li>
+        </ul>
+    </section>
+
+    <!-- CONTACT -->
+
+
+    <section id="contact" class="section reveal">
+        <h2>ANY QUESTIONS? CONTACT ME :</h2>
+
+        <div class="socials">
+            <a href="https://web.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://mail.google.com/mail/u/0/#inbox"><i class="fas fa-envelope"></i></a>
+        </div>
+
+        <form class="contact-form" action="mailto:princessanneconsignado@gmail.com" method="post" enctype="text/plain">
+        <h2>LEAVE YOUR MESSAGE HERE!</h2>
+        <p>THANK YOU!</p>
+
+        <label for="nickname">ENTER YOUR NICKNAME :</label>
+        <input type="text" id="nickname" name="Nickname" placeholder="Your Nickname" required>
+
+        
+
+        <label for="message">ENTER YOUR MESSAGE :</label>
+        <textarea id="message" name="Message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">SUBMIT</button>
+    </form>
+
+    </section>
+
+
+    <footer>
+        <p>© 2025 Princess Anne Consignado | Portfolio</p>
+    </footer>
+
+    <script src="script.js"></script>
+
+</div>
+
+</body>
+</html>
